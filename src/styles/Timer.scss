@@ -1,0 +1,15 @@
+.timer {
+    margin: auto;
+    margin-top: 4%;
+
+    border: .6em solid;
+    border-image: linear-gradient(to right, #b861c6 0%,#ffc7c7 100%);
+    border-image-slice: 1;
+    border-radius: 4%;
+
+
+    width: 22em;
+    height: 28em;
+    display: flex;
+    justify-content: center;    
+}
