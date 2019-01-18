@@ -1,5 +1,4 @@
 import React from 'react'
-import '../styles/Keypad.scss'
 
 const Keypad = props => {
     return(

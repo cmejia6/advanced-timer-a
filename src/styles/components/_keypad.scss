@@ -1,7 +1,9 @@
+$keypad-background-color : rgb(232, 240, 255);
+
 .keypad{
-    background-color: #999;
-    padding: 0.2rem;
-    height: 12rem;
+    background-color: $keypad-background-color;
+    height: 13rem;
+    padding-top: 5%;
 }
 
 .keypad-row {

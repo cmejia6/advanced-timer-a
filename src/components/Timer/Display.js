@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import '../styles/Display.scss'
 
 const Display = props =>  {
     return (

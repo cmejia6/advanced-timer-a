@@ -1,4 +1,6 @@
-.App {
-    text-align: center;
-
-  }
+@import './_settings.scss';
+@import './_base.scss';
+@import './components/timer';
+@import './components/display';
+@import './components/keypad';
+@import './components/controls';
