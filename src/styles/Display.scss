@@ -1,6 +1,17 @@
+$display-background-color : whitesmoke;
+
+.display{
+    align-items: center;
+    background-color: $display-background-color;    
+    display: flex;
+    flex-direction: column;
+    height: 10rem;
+    justify-content:center;
+}
+
 .label-container{
     align-items: center;
-    background-color: white;    
+    background-color: $display-background-color;;    
     display: flex;
     flex-direction: row;
     height: 10rem;
@@ -19,10 +30,31 @@
     color: #999;
     font-size: 1.8em;
     font-weight: 600;
-    margin: 0 1.2rem;
+    margin: 0 2rem;
     text-align: center;
 }
 
 .display-time{
     text-align: center;
+    border-color: white;
+}
+
+.display-time.display-seconds{
+    border-left: none;
+}
+
+.display-time.display-minutes{
+    border-left: none;
+    border-right: none;
+}
+
+.display-time.display-hours{
+    border-right: none;
+}
+
+.display-time.display-separator {  
+    background: white;  
+    border-left: none;
+    border-right: none;
+    padding-top: 0.59rem;
 }

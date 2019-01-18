@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import '../styles/Display.scss'
 
-export default class Display extends Component {
-  render() {
+const Display = props =>  {
     return (
-      <div>
+      <div className="display">
 
         <div className="label-container">
             <label type="text" className="display-countdown-label">H</label>
@@ -13,16 +12,21 @@ export default class Display extends Component {
         </div>
 
         <div className="input-group display-input-group input-group-lg">
-            <input type="text" className="form-control display-time" maxLength="2"
+            <input type="text" className="form-control display-time display-hours" maxLength="2"
                 placeholder="00"/>
-            <input type="text" className="form-control display-time" maxLength="2"
+            
+            <span className="display-time display-separator">:</span>
+
+            <input type="text" className="form-control display-time display-minutes" maxLength="2"
                 placeholder="00"/>
-            <input type="text" className="form-control display-time" maxLength="2"
+
+            <span className="display-time display-separator">:</span>
+
+            <input type="text" className="form-control display-time display-seconds" maxLength="2"
                 placeholder="00"/>
         </div>
-
       </div>
-
     )
-  }
 }
+
+export default Display
