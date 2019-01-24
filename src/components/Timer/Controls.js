@@ -6,7 +6,8 @@ const Controls = props => {
     <div>
       <div className="controls">
 
-        <button className="buttons btn btn-success btn-lg btn-block">
+        <button className="buttons btn btn-success btn-lg btn-block"
+          onClick={props.startTimer}>
             START
         </button>
 

@@ -1,6 +1,24 @@
 $keypad-background-color : rgb(232, 240, 255);
 
 .keypad{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 0em .3em 1.2em .3em;
+}
+
+.keypad-row {
+}
+
+.keypad-row > button{
+    margin: .2em;
+    width : 3.8em;
+}
+
+/*$keypad-background-color : rgb(232, 240, 255);
+
+.keypad{
     background-color: $keypad-background-color;
     height: 13rem;
     padding-top: 5%;
@@ -17,4 +35,4 @@ $keypad-background-color : rgb(232, 240, 255);
 .keypad-row > button {
     margin: 0.2rem;
     width: 100%;
-}
+}*/

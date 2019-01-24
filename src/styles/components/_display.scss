@@ -1,12 +1,49 @@
-$display-background-color : whitesmoke;
+.display{
+    margin: 1.6em .8em 1.6em .8em;
+}
+
+.label-container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.display-time{
+    text-align: center;
+    border-color: white;
+}
+
+.display-time.display-seconds{
+    border-left: none;
+}
+
+.display-time.display-minutes{
+    border-left: none;
+    border-right: none;
+}
+
+.display-time.display-hours{
+    border-right: none;
+}
+
+.display-time.display-separator {  
+    background: white;  
+    border-left: none;
+    border-right: none;
+    padding-top: 0.59rem;
+}
+
+/*$display-background-color : whitesmoke;
+
+.display-container{
+    
+}
 
 .display{
     background-color: $display-background-color;    
     display: flex;
     flex-direction: column;
-    justify-content: end;
-    margin-top: 3%;
-    height: 8.5rem;
+    justify-content: center;
+    margin-top: 6.6%;
 }
 
 .label-container{
@@ -53,4 +90,4 @@ $display-background-color : whitesmoke;
     border-left: none;
     border-right: none;
     padding-top: 0.59rem;
-}
+}*/
