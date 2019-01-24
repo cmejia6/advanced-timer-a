@@ -10,7 +10,8 @@ const Controls = props => {
           props.status !== 'started' &&
           <div className="buttons stopped">
             <button className="btn btn-success btn-lg btn-block"
-              onClick={props.startTimer}>
+              onClick={props.startTimer}
+              disabled={!props.canStart}>
                 START
             </button>
           </div>
