@@ -6,10 +6,29 @@ const Controls = props => {
     <div>
       <div className="controls">
 
-        <button className="buttons btn btn-success btn-lg btn-block"
-          onClick={props.startTimer}>
-            START
-        </button>
+        {
+          props.status !== 'started' &&
+          <div className="buttons stopped">
+            <button className="btn btn-success btn-lg btn-block"
+              onClick={props.startTimer}>
+                START
+            </button>
+          </div>
+        }
+
+        {
+          props.status === 'started' &&
+          <div className="buttons started">
+            <button className="btn btn-danger btn-lg btn-block"
+              onClick={props.onStop}>
+              STOP
+            </button>
+            <button className="btn btn-primary btn-lg btn-block"
+              onClick={props.onReset}>
+              RESET
+            </button>
+          </div>
+        }
 
       </div>
     </div>

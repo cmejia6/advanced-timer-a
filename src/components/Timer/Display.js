@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 const Display = props =>  {
     return (
         <div className="display">
-            {props.status === 'stopped' || true && (
+            {props.status !== 'started' && (
             //fix css later class display
             <div>
                 <div> 

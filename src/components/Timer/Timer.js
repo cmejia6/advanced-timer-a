@@ -12,19 +12,39 @@ export default class Timer extends Component {
       minutes : 0,
       hours : 0,
       //time : 0,
-      status : 'started'
+      status : null
     }
 
     this.startTimer = this.startTimer.bind(this);
+    this.handleControlStop = this.handleControlStop.bind(this);
+    this.handleControlsReset = this.handleControlsReset.bind(this);
   }
 
   startTimer(){
-    this.interval = setInterval(() => {
+    if (this.state.status !== 'started'){
 
-      //this.setState((prevState) => ({timeInterval : this.timeInterval}))
-      this.setState((prevState) => ({seconds : prevState.seconds  - 10})) //milliseconds
-    
-    }, 10);
+      this.setState(() => ({status : 'started'}))
+
+      this.interval = setInterval(() => {
+
+        //this.setState((prevState) => ({timeInterval : this.timeInterval}))
+        this.setState((prevState) => ({seconds : prevState.seconds  - 10})) //milliseconds
+      
+      }, 10);
+    }
+  }
+
+  handleControlStop(){
+    if (this.state.status === 'started'){
+      this.setState(() =>({status : 'stopped'})) 
+      clearInterval(this.interval)
+
+    }
+  }
+
+  handleControlsReset(){
+    clearInterval(this.interval)
+    this.setState(()=>({status:null}))
   }
   
   render() {
@@ -34,10 +54,14 @@ export default class Timer extends Component {
           time={this.state.seconds}
           status={this.state.status}/>
 
-        <Keypad />
+        <Keypad 
+          status={this.state.status}/>
 
-        <Controls 
-          startTimer={this.startTimer}/>
+        <Controls
+          status={this.state.status} 
+          startTimer={this.startTimer}
+          onStop={this.handleControlStop}
+          onReset={this.handleControlsReset}/>
       </div>
     )
   }

@@ -3,7 +3,7 @@ import React from 'react'
 const Keypad = props => {
     return(
         <div>
-            {props.status === 'stopped' || true &&
+            {props.status !== 'started' &&
                 <div className='keypad'>
                     <div className="keypad-row">
                         <button className="btn btn-light btn-small">1</button>
