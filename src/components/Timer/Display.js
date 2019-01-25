@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Time from '../../lib/Time'
 
 const Display = props =>  {
+
+    const time = new Time()
+
     return (
         <div className="display">
-            {props.status !== 'started' && (
+            {!props.timeInterval && (
             //fix css later class display
             <div>
                 <div> 
@@ -45,7 +49,7 @@ const Display = props =>  {
             </div>
             )}
 
-            {props.status === 'started' && (
+            {props.timeInterval && (
                 <div className="display-countdown">
                     <div>
                         <label type="text" className="display-countdown-label">H</label>
@@ -55,7 +59,7 @@ const Display = props =>  {
                     </div>
                     
                     <div className="display-countdown-time">
-                        {props.time}
+                        {time.getTime(props.timeInterval)}
                     </div>
                 </div>
             )}

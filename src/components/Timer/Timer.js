@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Display from './Display'
 import Keypad from './Keypad'
 import Controls from './Controls'
-import { debug } from 'util';
 
 export default class Timer extends Component {
   constructor(){
@@ -16,11 +15,16 @@ export default class Timer extends Component {
       unitOfTime : null
     }
 
-    this.startTimer = this.startTimer.bind(this);
+    this.canStart = this.canStart.bind(this);
     this.handleDisplayFocusChange = this.handleDisplayFocusChange.bind(this);
+    this.handleControlStart = this.handleControlStart.bind(this);
     this.handleControlStop = this.handleControlStop.bind(this);
     this.handleControlsReset = this.handleControlsReset.bind(this);
     this.handleKeypadClick = this.handleKeypadClick.bind(this);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval)
   }
 
   startTimer(){
@@ -28,10 +32,15 @@ export default class Timer extends Component {
 
       this.setState(() => ({status : 'started'}))
 
-      this.interval = setInterval(() => {
+      const totalMilliseconds = ((parseInt(this.state.hours) * 60 * 60)
+      + (parseInt(this.state.minutes) * 60)
+      + parseInt(this.state.seconds))
+      * 1000;
 
-        //this.setState((prevState) => ({timeInterval : this.timeInterval}))
-        this.setState((prevState) => ({seconds : prevState.seconds  - 10})) //milliseconds
+      this.setState(() => ({ timeInterval: parseInt(totalMilliseconds) }));
+
+      this.interval = setInterval(() => {
+      this.setState((prevState) => ({timeInterval : prevState.timeInterval  - 10})) //milliseconds
       
       }, 10);
     }
@@ -39,6 +48,10 @@ export default class Timer extends Component {
 
   handleDisplayFocusChange(unitOfTime) {
     this.setState(() => ({ unitOfTime }))
+  }
+
+  handleControlStart(){
+    this.startTimer();
   }
 
   handleControlStop(){
@@ -50,7 +63,7 @@ export default class Timer extends Component {
 
   handleControlsReset(){
     clearInterval(this.interval)
-    this.setState(()=>({status:null}))
+    this.setState(()=>({status:null, timeInterval:null}))
   }
 
   handleKeypadClick(time){
@@ -80,7 +93,6 @@ export default class Timer extends Component {
           hours = prevState.hours;
         }
 
-       console.log(hours)
         return ({ hours : this.formatTime(hours)})
       })
     }
@@ -147,10 +159,10 @@ render() {
     <div className="timer">
       <Display 
         onFocusChange={this.handleDisplayFocusChange}
-        status={this.state.status}
         hours={this.state.hours}
         minutes={this.state.minutes}
-        seconds={this.state.seconds}/>
+        seconds={this.state.seconds}
+        timeInterval={this.state.timeInterval}/>
 
       <Keypad 
         onClick={this.handleKeypadClick}
@@ -158,9 +170,10 @@ render() {
 
       <Controls
         status={this.state.status} 
-        startTimer={this.startTimer}
+        onStart={this.handleControlStart}
         onStop={this.handleControlStop}
-        onReset={this.handleControlsReset}/>
+        onReset={this.handleControlsReset}
+        canStart={this.canStart}/>
     </div>
   )
 }
