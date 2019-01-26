@@ -56,7 +56,7 @@ export default class Timer extends Component {
 
   handleControlStop(){
     if (this.state.status === 'started'){
-      this.setState(() =>({status : 'stopped'})) 
+      this.setState(() =>({status : 'stopped', timeInterval : null})) 
       clearInterval(this.interval)
     }
   }
@@ -75,8 +75,6 @@ export default class Timer extends Component {
     } else if (this.state.unitOfTime === 'SS'){
       this.setSeconds(time)
     }
-
-    
 
     this.canStart();
   }
